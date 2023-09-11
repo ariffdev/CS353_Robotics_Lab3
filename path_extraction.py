@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from planning_map import world_map, start, goal
-"""from follow_path_test import followPath, north, east, south, west
-""" #remove when testing on robot
+from follow_path_test import followPath, north, east, south, west
+
 world_map_x_len = len(world_map)
 world_map_y_len = len(world_map[0])
 
@@ -48,7 +48,7 @@ def path_extractor(wavefront_plan, start, goal):
     # set the most available neighbour as current position to keep path going
     currPos = most_available_neighbour
     path.append(most_available_neighbour)
-    """print(most_available_neighbour)  # printing to the EV3 screen""" #remove comment when testing on robot
+    print(most_available_neighbour)  # printing to the EV3 screen
   return path  # return the constructed path
 
 
