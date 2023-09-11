@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from planning_map import world_map, start, goal
-from follow_path_test import followPath, north, east, south, west
-
+"""from follow_path_test import followPath, north, east, south, west
+""" #remove when testing on robot
 world_map_x_len = len(world_map)
 world_map_y_len = len(world_map[0])
 
@@ -28,40 +28,37 @@ def compute_neighbour_cells(currPos): #currPos -> tuple (x,y) of current positio
   return neighbour_cells #tuple of neighbour cells
 
 
+
 def path_extractor(wavefront_plan, start, goal):
   path = []
   currPos = start
 
-  while goal not in path: #determine path up till goal cell
+  while goal not in path:  # determine path up till goal cell
     neighbours = compute_neighbour_cells(currPos)
-    available_neighbours = [neighbour for neighbour in neighbours if world_map[neighbour[x]][neighbour[y]] != 1]
+    available_neighbours = [
+        neighbour for neighbour in neighbours if world_map[neighbour[x]][neighbour[y]] != 1]
 
   # check the value in wavefront_plan that corresponds with the available_neighbours and find the one with the least value
-    lowest_move_option = float('inf') # initializing a number (infinity) that all options are guaranteed to be lower than
+    # initializing a number (infinity) that all options are guaranteed to be lower than
+    lowest_move_option = float('inf')
     for neighbour in available_neighbours:
       if wavefront_plan[neighbour[x]][neighbour[y]] < lowest_move_option:
         lowest_move_option = wavefront_plan[neighbour[x]][neighbour[y]]
         most_available_neighbour = neighbour
+    # set the most available neighbour as current position to keep path going
+    currPos = most_available_neighbour
     path.append(most_available_neighbour)
-    print(most_available_neighbour) #printing to the EV3 screen
-
-    currPos = most_available_neighbour #set the most available neighbour as current position to keep path going
-  return path #return the constructed path
-
-
-      
+    """print(most_available_neighbour)  # printing to the EV3 screen""" #remove comment when testing on robot
+  return path  # return the constructed path
 
 
 
-    
-wavefront_plan = [[9, 8, 7, 6, 5],
-                  [10, 9, 1, 1, 4],
-                  [11, 10, 1, 4, 3],
-                  [12, 1, 4, 3, 2]]
+"""Test this on the robot for Part 1"""
+# wavefront_plan = [[9, 8, 7, 6, 5],
+#                   [10, 9, 1, 1, 4],
+#                   [11, 10, 1, 4, 3],
+#                   [12, 1, 4, 3, 2]]
 
-path = path_extractor(wavefront_plan, start, goal)
-
-
-#Test this on the robot
-followPath(start, east, path)
+# path = path_extractor(wavefront_plan, start, goal)
+#followPath(start, east, path)
 

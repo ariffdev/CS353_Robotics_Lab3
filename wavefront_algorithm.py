@@ -1,7 +1,6 @@
 
 from planning_map import world_map, start, goal
 
-
 x, y = 0, 1  # for indexing position tuples
 
 world_map_x_len = len(world_map)
@@ -57,16 +56,11 @@ def wavefront_algorithm(world_map, start, goal):
         wavefront_plan[neighbour[x]][neighbour[y]] = working_cell_value() + 1
         queue.append(neighbour)
     
-    print(wavefront_plan)
+  return wavefront_plan
 
+""" TEST """
+# wavefront_algorithm(world_map, start, goal)
 
-    
-
-
-
-
-
-wavefront_algorithm(world_map, start, goal)
 
 
 
