@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from planning_map import world_map, start, goal
 from follow_path_test import followPath, north, east, south, west
 
@@ -25,6 +26,7 @@ def compute_neighbour_cells(currPos): #currPos -> tuple (x,y) of current positio
   neighbour_cells = list(neighbour_dict.values())
 
   return neighbour_cells #tuple of neighbour cells
+
 
 def path_extractor(wavefront_plan, start, goal):
   path = []
